@@ -21,6 +21,7 @@ public class Config extends javax.swing.JFrame {
 	// SWAP 1, TEAM 06
 	// Added day list to begin healing this cursed beast
 	String[] weekDays = {"Sunday", "Monday", "tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+		
 	
     private boolean firstSelection = true;
     private int numSelected = 0;
@@ -41,53 +42,53 @@ public class Config extends javax.swing.JFrame {
         
     	for(Day day: days) {
     		if(day.getNameOfDay().equals("Sunday")) {
-    			this.check[0].doClick();
+    			this.sundayCheck.doClick();
     			ArrayList<String> jobs = day.getJobs();
     			for(String job: jobs) {
     				this.models[0].addElement(job);
-    				this.jobList[0].setModel(this.models[0]);
+    				this.sundayJobList.setModel(this.models[0]);
     			}
     		} else if(day.getNameOfDay().equals("Monday")) {
     			this.mondayCheck.doClick();
     			ArrayList<String> jobs = day.getJobs();
     			for(String job: jobs) {
     				this.models[1].addElement(job);
-    				this.jobList[0].setModel(this.models[1]);
+    				this.sundayJobList.setModel(this.models[1]);
     			}
     		} else if(day.getNameOfDay().equals("Tuesday")) {
     			this.tuesdayCheck.doClick();
     			ArrayList<String> jobs = day.getJobs();
     			for(String job: jobs) {
     				this.models[2].addElement(job);
-    				this.jobList[0].setModel(this.models[2]);
+    				this.sundayJobList.setModel(this.models[2]);
     			}
     		} else if(day.getNameOfDay().equals("Wednesday")) {
     			this.wednesdayCheck.doClick();
     			ArrayList<String> jobs = day.getJobs();
     			for(String job: jobs) {
     				this.models[3].addElement(job);
-    				this.jobList[0].setModel(this.models[3]);
+    				this.sundayJobList.setModel(this.models[3]);
     			}
     		} else if(day.getNameOfDay().equals("Thursday")) {
     			this.thursdayCheck.doClick();
     			ArrayList<String> jobs = day.getJobs();
     			for(String job: jobs) {
     				this.models[4].addElement(job);
-    				this.jobList[0].setModel(this.models[4]);
+    				this.sundayJobList.setModel(this.models[4]);
     			}
     		} else if(day.getNameOfDay().equals("Friday")) {
     			this.fridayCheck.doClick();
     			ArrayList<String> jobs = day.getJobs();
     			for(String job: jobs) {
     				this.models[5].addElement(job);
-    				this.jobList[0].setModel(this.models[5]);
+    				this.sundayJobList.setModel(this.models[5]);
     			}
     		} else if(day.getNameOfDay().equals("Saturday")) {
     			this.saturdayCheck.doClick();
     			ArrayList<String> jobs = day.getJobs();
     			for(String job: jobs) {
     				this.models[6].addElement(job);
-    				this.jobList[0].setModel(this.models[6]);
+    				this.sundayJobList.setModel(this.models[6]);
     			}
     		}
     	}
@@ -105,17 +106,6 @@ public class Config extends javax.swing.JFrame {
     
     @SuppressWarnings("rawtypes")
 	private void initDyn() {
-    	for(int i=0; i<7; i++){
-    		this.scrollPane[i] = new javax.swing.JScrollPane();
-            this.scrollPane[i].setPreferredSize(new Dimension(185,150));
-            this.jobList[i] = new javax.swing.JList();
-            this.jobName[i] = new javax.swing.JTextField();
-            this.label[i] = new javax.swing.JLabel();
-            this.addJob[i] = new javax.swing.JButton();
-            this.deleteJob[i] = new javax.swing.JButton();
-            this.tab[i] = new javax.swing.JPanel();
-    	}
-    	/*
         this.sundayScrollPane = new javax.swing.JScrollPane();
         this.sundayScrollPane.setPreferredSize(new Dimension(185,150));
         this.sundayJobList = new javax.swing.JList();
@@ -179,13 +169,12 @@ public class Config extends javax.swing.JFrame {
         this.fridayTab = new javax.swing.JPanel();
         this.saturdayTab = new javax.swing.JPanel();
         this.sundayTab = new javax.swing.JPanel();
-        */
     }
 
     private void initComponents() {
 
     	this.jPanel1 = new javax.swing.JPanel();
-        this.check[0] = new javax.swing.JCheckBox();
+        this.sundayCheck = new javax.swing.JCheckBox();
         this.wednesdayCheck = new javax.swing.JCheckBox();
         this.mondayCheck = new javax.swing.JCheckBox();
         this.tuesdayCheck = new javax.swing.JCheckBox();
@@ -201,12 +190,12 @@ public class Config extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(801, 87));
         setResizable(false);
 
-        this.check[0].setText(weekDays[0]);
-        this.check[0].setName(weekDays + "Check"); // NOI18N
-        this.check[0].addActionListener(new java.awt.event.ActionListener() {
+        this.sundayCheck.setText("Sunday");
+        this.sundayCheck.setName("sundayCheck"); // NOI18N
+        this.sundayCheck.addActionListener(new java.awt.event.ActionListener() {
             @Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkActionPerformed(evt, 0);
+                sundayCheckActionPerformed(evt);
             }
         });
 
@@ -283,7 +272,7 @@ public class Config extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(this.jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(this.check[0])
+                .addComponent(this.sundayCheck)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(this.mondayCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -305,7 +294,7 @@ public class Config extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(this.check[0], javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(this.sundayCheck, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(this.fridayCheck, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(this.saturdayCheck, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
@@ -342,12 +331,8 @@ public class Config extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    
-    
-    
-    
-    
-    
+    /*
+     /*
 	private void checkActionPerformed(java.awt.event.ActionEvent evt, int i) {                                            
         if(this.check[i].isSelected()) {
             this.numSelected++;
@@ -432,36 +417,12 @@ public class Config extends javax.swing.JFrame {
         }
         
     }                                           
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+     */
     
     
     /**
 	 * @param evt  
 	 */
-	/*
     @SuppressWarnings("unchecked")
 	private void sundayCheckActionPerformed(java.awt.event.ActionEvent evt) {                                            
         if(this.sundayCheck.isSelected()) {
@@ -546,7 +507,6 @@ public class Config extends javax.swing.JFrame {
         }
         
     }                                           
-	*/
 
     /**
 	 * @param evt  
@@ -1079,13 +1039,14 @@ public class Config extends javax.swing.JFrame {
 	 */
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	ArrayList<Day> days = new ArrayList<Day>();
+    	
     	// SWAP 1, TEAM 06
     	// huge amount of repetition was removed
-    	//boolean[] checks = {this.sundayCheck.isSelected(), this.mondayCheck.isSelected(), this.tuesdayCheck.isSelected(), this.wednesdayCheck.isSelected(),
-    	//this.thursdayCheck.isSelected(), this.fridayCheck.isSelected(), this.saturdayCheck.isSelected()};
+    	boolean[] checks = {this.sundayCheck.isSelected(), this.mondayCheck.isSelected(), this.tuesdayCheck.isSelected(), this.wednesdayCheck.isSelected(),
+    	this.thursdayCheck.isSelected(), this.fridayCheck.isSelected(), this.saturdayCheck.isSelected()};
     	
     	for(int i=0; i<7; i++){
-    		if(check[i].isSelected()){
+    		if(checks[i]){
     		ArrayList<Object> dotw = new ArrayList<Object>();
     		List<Object> jobs = Arrays.asList(this.models[i].toArray());
     		dotw.addAll(jobs);
@@ -1140,12 +1101,15 @@ public class Config extends javax.swing.JFrame {
                     break;
                 }
             }
-        // SWAP 1, TEAM 06
-        // Rat-king of catches, J7 fix
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Config.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Config.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Config.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Config.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
         //</editor-fold>
 
         /* Create and display the form */
@@ -1157,6 +1121,7 @@ public class Config extends javax.swing.JFrame {
         });
     }
     
+    /*
     private javax.swing.JScrollPane[] scrollPane 	= new javax.swing.JScrollPane[7];
     private javax.swing.JButton[] addJob 			= new javax.swing.JButton[7];
     private javax.swing.JButton[] deleteJob 		= new javax.swing.JButton[7];
@@ -1167,7 +1132,8 @@ public class Config extends javax.swing.JFrame {
     private javax.swing.JPanel[] tab 				= new javax.swing.JPanel[7];
     private javax.swing.JCheckBox[] check			= new javax.swing.JCheckBox[7];
     public int i;
-    /*
+     */
+    
     private javax.swing.JScrollPane sundayScrollPane;
     private javax.swing.JButton sundayAddJob;
     private javax.swing.JButton sundayDeleteJob;
@@ -1176,7 +1142,7 @@ public class Config extends javax.swing.JFrame {
     private javax.swing.JTextField sundayJobName;
     private javax.swing.JLabel sundayLabel;
     private javax.swing.JPanel sundayTab;
-    */
+    
     private javax.swing.JScrollPane mondayScrollPane;
     private javax.swing.JButton mondayAddJob;
     private javax.swing.JButton mondayDeleteJob;
@@ -1232,17 +1198,14 @@ public class Config extends javax.swing.JFrame {
     private javax.swing.JPanel saturdayTab;
     
     private javax.swing.JTabbedPane dayTabs;
+    private javax.swing.JCheckBox fridayCheck;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton nextButton;
-    
-    /*
-    private javax.swing.JCheckBox sundayCheck;
-    */
     private javax.swing.JCheckBox mondayCheck;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JCheckBox saturdayCheck;
+    private javax.swing.JCheckBox sundayCheck;
+    private javax.swing.JCheckBox thursdayCheck;
     private javax.swing.JCheckBox tuesdayCheck;
     private javax.swing.JCheckBox wednesdayCheck;
-    private javax.swing.JCheckBox thursdayCheck;
-    private javax.swing.JCheckBox fridayCheck;
-    private javax.swing.JCheckBox saturdayCheck;
 }
