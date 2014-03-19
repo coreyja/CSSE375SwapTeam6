@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class Config extends javax.swing.JFrame {
 
 	// SWAP 1, TEAM 06
-	// Added day list to begin healing this cursed beast
+	// Added day list to begin healing this accursed beast
 	String[] weekDays = {"Sunday", "Monday", "tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 		
 	
@@ -28,7 +28,11 @@ public class Config extends javax.swing.JFrame {
     @SuppressWarnings("rawtypes")
 	private DefaultListModel[] models;
     
-    
+    // SWAP 1, TEAM 06
+    // Smell: 
+    // major replication
+    // needs a new check system to be fixed, which is also major replication
+    // 
     /**
      * Used to edit days.
      *

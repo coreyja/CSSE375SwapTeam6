@@ -18,7 +18,10 @@ import java.util.ArrayList;
 public class Main {
 
 	// SWAP 1, TEAM 06
-	// minor changes to main so far, more needed
+	// Smell:
+	// Divergent Change
+	// Main really shouldn't have getter and setter methods, something is wrong here.
+	// Could be moved into more appropriate classes or split into it's own.
 	
 	private static ArrayList<Day> days;
 	private static ArrayList<Worker> workers;

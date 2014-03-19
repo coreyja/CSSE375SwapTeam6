@@ -12,6 +12,12 @@ import java.util.HashMap;
  */
 public class Worker implements Serializable{
 
+	// SWAP 1, TEAM 06
+	// Smell:
+	// Data class (lazy?)
+	// Worker doesn't actually do much more than store data.
+	// minor things are done in the functions...to store data.
+	// needs more responsibilities. 
 	private String name;
 	private ArrayList<Day> days = new ArrayList<Day>();
 	private HashMap<String, Integer> timesWorked;

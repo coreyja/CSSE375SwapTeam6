@@ -74,7 +74,13 @@ public class WorkerSetup extends javax.swing.JFrame {
 		initComponents();
 		addWorker();
 	}
-
+	// SWAP 1, TEAM 06:
+	// Smells:
+	// Long method
+	// Duplicated code
+	/* With the elimination of the duplicated and similar code by pulling it out into its own function,
+		this function can be shortened.
+	*/
 	private void addWorker() {
 		this.days = Main.getDays();
 		javax.swing.JTabbedPane tempWorkerDays = new javax.swing.JTabbedPane();

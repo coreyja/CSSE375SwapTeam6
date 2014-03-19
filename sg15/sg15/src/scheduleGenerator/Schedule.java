@@ -72,6 +72,35 @@ public class Schedule extends Thread implements Serializable {
 		}
 	}
 
+	private ArrayList<Worker> getWorkers(Day day, String job, ArrayList<String> workersWorking){
+		ArrayList<Worker> workersForJob = new ArrayList<Worker>();
+		for (Worker worker : this.workerIndices.get(this.numForName(day.getNameOfDay()))) {
+			Day workerDay = worker.getDayWithName(day.getNameOfDay());
+			if (workerDay.getJobs().contains(job) && !workersWorking.contains(worker.getName())) {
+				workersForJob.add(worker);
+
+			}
+		}
+		return workersForJob;
+	}
+	
+	// SWAP 1, TEAM 06
+	// Even with this pulled out, it still has a temporary variable.
+	// needs to be changed to just check if the month advances,
+	// could be done by checking the day for rollover.
+	private void updateCalandar(){
+		String lastDateMade = this.schedule.lastKey();
+		String[] parts = lastDateMade.split("/");
+		int year = Integer.parseInt(parts[0]);
+		int month = Integer.parseInt(parts[1]) - 1;
+		int day = Integer.parseInt(parts[2]);
+		this.cal = new GregorianCalendar(year, month, day);
+		int tempNum = this.cal.get(Calendar.MONTH);
+		while (tempNum == this.cal.get(Calendar.MONTH)) {
+			this.cal.add(Calendar.DATE, 1);
+		}
+	}
+	
 	/**
 	 * Calculates another month of schedule based on workers availability.
 	 * 
@@ -82,16 +111,8 @@ public class Schedule extends Thread implements Serializable {
 
 		// If the schedule has already been generated
 		if (this.schedule.size() > 0) {
-			String lastDateMade = this.schedule.lastKey();
-			String[] parts = lastDateMade.split("/");
-			int year = Integer.parseInt(parts[0]);
-			int month = Integer.parseInt(parts[1]) - 1;
-			int day = Integer.parseInt(parts[2]);
-			this.cal = new GregorianCalendar(year, month, day);
-			int tempNum = this.cal.get(Calendar.MONTH);
-			while (tempNum == this.cal.get(Calendar.MONTH)) {
-				this.cal.add(Calendar.DATE, 1);
-			}
+			// SWAP 1, TEAM 06
+			updateCalandar();
 		}
 
 		// Used to see if month changes
@@ -122,26 +143,13 @@ public class Schedule extends Thread implements Serializable {
 
 					for (String job : jobsInOrder) {
 
-						ArrayList<Worker> workersForJob = new ArrayList<Worker>();
-
-						for (Worker worker : this.workerIndices.get(this
-								.numForName(day.getNameOfDay()))) {
-							Day workerDay = worker.getDayWithName(day
-									.getNameOfDay());
-							if (workerDay.getJobs().contains(job)
-									&& !workersWorking.contains(worker
-											.getName())) {
-								workersForJob.add(worker);
-
-							}
-						}
+						// SWAP 1, TEAM 06
+						ArrayList<Worker> workersForJob = getWorkers(day, job, workersWorking);
+						
 						if (workersForJob.size() > 0) {
-							Worker workerForJob = workersForJob
-									.get(new Random().nextInt(workersForJob
-											.size()));
+							Worker workerForJob = workersForJob.get(new Random().nextInt(workersForJob.size()));
 							for (Worker w : workersForJob) {
-								if (w.numWorkedForJob(job) < workerForJob
-										.numWorkedForJob(job)) {
+								if (w.numWorkedForJob(job) < workerForJob.numWorkedForJob(job)) {
 									workerForJob = w;
 								}
 							}
@@ -151,24 +159,14 @@ public class Schedule extends Thread implements Serializable {
 						} else {
 							jobsWithWorker.put(job, new Worker("Empty",
 									new ArrayList<Day>()));
-							JOptionPane
-									.showMessageDialog(
-											new JFrame(),
-											"No workers are able to work as a(n) "
-													+ job + " on "
-													+ day.getNameOfDay());
+							JOptionPane.showMessageDialog(new JFrame(),"No workers are able to work as a(n) "
+													+ job + " on "+ day.getNameOfDay());
 							this.workerForEveryJob = false;
 							break;
 						}
 
 					}
-					String date = this.cal.get(Calendar.YEAR)
-							+ "/"
-							+ String.format("%02d",
-									(this.cal.get(Calendar.MONTH) + 1))
-							+ "/"
-							+ String.format("%02d",
-									this.cal.get(Calendar.DAY_OF_MONTH));
+					String date = this.cal.get(Calendar.YEAR)+ "/"+ String.format("%02d",(this.cal.get(Calendar.MONTH) + 1))+ "/"+ String.format("%02d",this.cal.get(Calendar.DAY_OF_MONTH));
 					this.schedule.put(date, jobsWithWorker);
 					break; // Breaks so it doesn't check the other days
 				}
@@ -186,6 +184,10 @@ public class Schedule extends Thread implements Serializable {
 		Main.dumpConfigFile();
 	}
 
+	// SWAP 1, TEAM 06
+	// Smell:
+	// Swap statement
+	// Decomposed swap statement into if statements is still a mess, could be handled with an array of the days and getting indexes.
 	private int numForName(String nameOfDay) {
 		int dayNum = 0;
 		if (nameOfDay.equals("Sunday")) {

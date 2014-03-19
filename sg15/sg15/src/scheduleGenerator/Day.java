@@ -14,6 +14,9 @@ public class Day implements Serializable{
 	private String dayOfWeek;
 	private ArrayList<String> jobs = new ArrayList<String>();
 	
+	// SWAP 1, TEAM 02
+	// Smell:
+	// Day is a data class, needs more responsibilities, or to be decomposed.
 	/**
 	 * Construct a day with a name and jobs.
 	 * 
