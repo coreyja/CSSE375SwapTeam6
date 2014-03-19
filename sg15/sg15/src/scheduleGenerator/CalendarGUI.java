@@ -55,6 +55,7 @@ public class CalendarGUI extends javax.swing.JFrame {
 	}
 
 	// SWAP 1, TEAM 06
+	// QUALITY CHANGES:
 	// Refactored out a huge case statement
 	private void setTitleMonth(int n, int year) {
 		this.monthTitle.setText(month[n-1] + year);

@@ -332,7 +332,6 @@ public class Config extends javax.swing.JFrame {
     }// </editor-fold>
 
     /*
-     /*
 	private void checkActionPerformed(java.awt.event.ActionEvent evt, int i) {                                            
         if(this.check[i].isSelected()) {
             this.numSelected++;
@@ -1041,7 +1040,9 @@ public class Config extends javax.swing.JFrame {
     	ArrayList<Day> days = new ArrayList<Day>();
     	
     	// SWAP 1, TEAM 06
+    	// QUALITY CHANGES
     	// huge amount of repetition was removed
+    	// each day had its own big statement, now they're all inside of the forloop that references the days of the week at the top.
     	boolean[] checks = {this.sundayCheck.isSelected(), this.mondayCheck.isSelected(), this.tuesdayCheck.isSelected(), this.wednesdayCheck.isSelected(),
     	this.thursdayCheck.isSelected(), this.fridayCheck.isSelected(), this.saturdayCheck.isSelected()};
     	

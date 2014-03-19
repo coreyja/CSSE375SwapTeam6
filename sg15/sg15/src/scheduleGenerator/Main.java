@@ -17,10 +17,13 @@ import java.util.ArrayList;
  */
 public class Main {
 
+	// SWAP 1, TEAM 06
+	// minor changes to main so far, more needed
+	
 	private static ArrayList<Day> days;
 	private static ArrayList<Worker> workers;
 	private static File path = new File("schedule_data.ser");
-	
+
 	/**
 	 * Configures days.
 	 */
@@ -43,21 +46,20 @@ public class Main {
 	public static void main(String[] args) {
 		path = new File("schedule_data.ser");
 		config = new Config();
-		
-		//Code to open the config file.
-		
+
+		// Code to open the config file.
+
 		try {
 			recallConfigFile();
-			if(getSchedule() != (null)){
+			if (getSchedule() != (null)) {
 				cal = new CalendarGUI(getSchedule());
-				//config.setVisible(true);
+				// config.setVisible(true);
 				cal.setVisible(true);
-			} else{
+			} else {
 				config.setVisible(true);
 			}
 		} catch (Exception exception) {
 			exception.printStackTrace();
-			
 		}
 	}
 
@@ -141,13 +143,13 @@ public class Main {
 	public static void setDays(ArrayList<Day> d) {
 		days = d;
 	}
-	
+
 	/**
 	 * Dumps data to the file schedule_data.ser.
-	 *
+	 * 
 	 */
-	public static void dumpConfigFile(){
-		
+	public static void dumpConfigFile() {
+
 		try {
 			path.delete();
 			path.createNewFile();
@@ -159,7 +161,7 @@ public class Main {
 			fileStore.writeObject(HTMLGenerator.getTables());
 			fileStore.close();
 			dumpConfig.close();
-			
+
 			System.out.println("Stored");
 
 		} catch (FileNotFoundException exception) {
@@ -168,23 +170,24 @@ public class Main {
 			exception.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Recalls data from schedule_data.ser.
-	 *
+	 * 
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public static void recallConfigFile() throws ClassNotFoundException, IOException{
-		if(path.exists()) {
+	public static void recallConfigFile() throws ClassNotFoundException,
+			IOException {
+		if (path.exists()) {
 			FileInputStream recallConfig = new FileInputStream(path);
 			ObjectInputStream fileRecall = new ObjectInputStream(recallConfig);
 			days = (ArrayList<Day>) fileRecall.readObject();
 			workers = (ArrayList<Worker>) fileRecall.readObject();
 			schedule = (Schedule) fileRecall.readObject();
-			HTMLGenerator.setTables((String)fileRecall.readObject());
-			
+			HTMLGenerator.setTables((String) fileRecall.readObject());
+
 			fileRecall.close();
 			recallConfig.close();
 		}
