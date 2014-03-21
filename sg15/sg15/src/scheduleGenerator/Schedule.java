@@ -147,9 +147,14 @@ public class Schedule extends Thread implements Serializable {
 						ArrayList<Worker> workersForJob = getWorkers(day, job, workersWorking);
 						
 						if (workersForJob.size() > 0) {
-							Worker workerForJob = workersForJob.get(new Random().nextInt(workersForJob.size()));
+                            // SWAP 1, TEAM 06
+                            // BONUS FEATURE
+                            // Schedule each person at least once before repeating a person
+                            // This is achieved by adding a check for the total number of jobs worked and selecting the worker
+                            // that has to lowest total jobs worked, and the lowest number of times working this job as a tie breaker
+							Worker workerForJob = workersForJob.get(0);
 							for (Worker w : workersForJob) {
-								if (w.numWorkedForJob(job) < workerForJob.numWorkedForJob(job)) {
+								if (w.numWorkedForJob(job) < workerForJob.numWorkedForJob(job) || w.numWorkedTotal() < workerForJob.numWorkedTotal()) {
 									workerForJob = w;
 								}
 							}

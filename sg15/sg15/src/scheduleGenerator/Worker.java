@@ -67,6 +67,22 @@ public class Worker implements Serializable{
 	public int numWorkedForJob(String jobName) {
 		return this.timesWorked.get(jobName);
 	}
+
+
+    // SWAP 1, TEAM 06
+    // BONUS FEATURE - Used by the scheduler to prioritize people who haven't worked at all yet
+    // To increase efficiency keep track of the total instead of calculating it every time. Requires more changes
+    // to code base though
+    public int numWorkedTotal() {
+        int numWorked = 0;
+        for(Day day: days) {
+            for(String job:day.getJobs()) {
+                numWorked += this.timesWorked.get(job);
+            }
+        }
+
+        return numWorked;
+    }
 	
 	/**
 	 * Returns the workers day based on name.
