@@ -75,9 +75,7 @@ public class WorkerSetup extends javax.swing.JFrame {
 		addWorker();
 	}
 	// SWAP 1, TEAM 06:
-	// Smells:
-	// Long method
-	// Duplicated code
+	// Smells: Long method + Duplicated code
 	/* With the elimination of the duplicated and similar code by pulling it out into its own function,
 		this function can be shortened.
 	*/

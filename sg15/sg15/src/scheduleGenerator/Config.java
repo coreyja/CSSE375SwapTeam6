@@ -12,6 +12,9 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+// SWAP 1, TEAM 06
+// Smell: Large Class - Tries to do too many things
+// Should at a minimum create a "DaySwing" class or similar that handles all the J-component interaction for each day
 /**
  *
  * @author schneimd
@@ -29,9 +32,8 @@ public class Config extends javax.swing.JFrame {
 	private DefaultListModel[] models;
     
     // SWAP 1, TEAM 06
-    // Smell: 
-    // major replication
-    // needs a new check system to be fixed, which is also major replication
+    // Smell: Major Replication
+    // Needs a new check system to be fixed, which is also major replication
     // 
     /**
      * Used to edit days.

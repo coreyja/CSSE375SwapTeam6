@@ -185,8 +185,7 @@ public class Schedule extends Thread implements Serializable {
 	}
 
 	// SWAP 1, TEAM 06
-	// Smell:
-	// Switch statement
+	// Smell: Switch statement
 	// Decomposed switch statement into if statements is still a mess, could be handled with an array of the days and getting indexes.
 	private int numForName(String nameOfDay) {
 		int dayNum = 0;
