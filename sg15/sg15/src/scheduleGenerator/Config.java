@@ -112,6 +112,9 @@ public class Config extends javax.swing.JFrame {
     
     @SuppressWarnings("rawtypes")
 	private void initDyn() {
+        // SWAP 1, TEAM 06
+        // Smell: Data Clumps
+        // Each of these groups of J-Components is identical and could easily be made into it's own class
         this.sundayScrollPane = new javax.swing.JScrollPane();
         this.sundayScrollPane.setPreferredSize(new Dimension(185,150));
         this.sundayJobList = new javax.swing.JList();
