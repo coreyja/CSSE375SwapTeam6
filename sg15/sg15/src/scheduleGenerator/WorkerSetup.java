@@ -75,7 +75,7 @@ public class WorkerSetup extends javax.swing.JFrame {
 		addWorker();
 	}
 	// SWAP 1, TEAM 06:
-	// Smells: Long method + Duplicated code
+	// Smells: Long method
 	/* With the elimination of the duplicated and similar code by pulling it out into its own function,
 		this function can be shortened.
 	*/
@@ -110,6 +110,9 @@ public class WorkerSetup extends javax.swing.JFrame {
 			JPanel dayTab = new JPanel();
 
 			// Set veritcal and horizontal layouts.
+            // SWAP 1, TEAM 06:
+            // Smells: Long Parameter List
+            // Instead of trying to set up the layout in one line, break it into sub parts and aggregate the result at the end
 			javax.swing.GroupLayout sundayTab1Layout = new javax.swing.GroupLayout(
 					dayTab);
 			dayTab.setLayout(sundayTab1Layout);

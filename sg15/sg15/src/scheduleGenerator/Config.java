@@ -33,7 +33,7 @@ public class Config extends javax.swing.JFrame {
     
     // SWAP 1, TEAM 06
     // Smell: Major Replication
-    // Needs a new check system to be fixed, which is also major replication
+    // Needs a new checkbox system to be fixed, which is also major replication
     // 
     /**
      * Used to edit days.
