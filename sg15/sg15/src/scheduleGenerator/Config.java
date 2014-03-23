@@ -15,6 +15,9 @@ import javax.swing.JOptionPane;
 // SWAP 1, TEAM 06
 // Smell: Large Class - Tries to do too many things
 // Should at a minimum create a "DaySwing" class or similar that handles all the J-component interaction for each day
+// Smell 2: Shotgun Surgery
+// All of the days have their own individual methods and to make a change that affects all of them, you have to modify the code for each day.
+// Days should all be treated as an instance of day or use the "DaySwing" class idea to use the same code.
 /**
  *
  * @author schneimd
@@ -23,7 +26,7 @@ public class Config extends javax.swing.JFrame {
 
 	// SWAP 1, TEAM 06
 	// Added day list to begin healing this accursed beast
-	String[] weekDays = {"Sunday", "Monday", "tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+	String[] weekDays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 		
 	
     private boolean firstSelection = true;
@@ -1103,7 +1106,8 @@ public class Config extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+        // SWAP 1, TEAM 06
+    	// Exception handling refactoring
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1111,13 +1115,7 @@ public class Config extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Config.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Config.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Config.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException|InstantiationException|IllegalAccessException|javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Config.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>

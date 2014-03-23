@@ -85,6 +85,8 @@ public class Schedule extends Thread implements Serializable {
 	}
 	
 	// SWAP 1, TEAM 06
+	// Smell:
+	// Temporary Field
 	// Even with this pulled out, it still has a temporary variable.
 	// needs to be changed to just check if the month advances,
 	// could be done by checking the day for rollover.
