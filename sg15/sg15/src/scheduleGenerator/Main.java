@@ -1,13 +1,14 @@
 package scheduleGenerator;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * This class handles the interaction of one frame to another as well as
@@ -24,8 +25,8 @@ public class Main {
 	
 	private static ArrayList<Day> days;
 	private static ArrayList<Worker> workers;
-	private static File path = new File("schedule_data.ser");
-
+	private static File standardPath = new File("schedule_data.ser");
+	private static File path;
 	/**
 	 * Configures days.
 	 */
@@ -46,9 +47,29 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		path = new File("schedule_data.ser");
+		//path = new File("schedule_data.ser");
 		config = new Config();
-
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter schedule file name:");
+		String input = scanner.next();
+		scanner.close();
+		if(input.length() >=5){
+		System.out.println(input.substring(input.length()-5, input.length()));
+		}
+		if (input == null || input.isEmpty()){
+			path = standardPath;
+		}
+		else if(input.length() >=5){
+			if(input.substring(input.length()-5, input.length()).equals(".ser")){
+				path = new File(input);
+			}
+			else{
+				path = new File(input + ".ser");
+			}
+		}
+		else{
+			path = new File(input + ".ser");
+		}
 		// Code to open the config file.
 
 		try {
