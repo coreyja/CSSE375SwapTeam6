@@ -48,6 +48,10 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		//path = new File("schedule_data.ser");
+        // SWAP 1, TEAM 06
+        // ADDITIONAL FEATURE
+        // Now have the option to load a schedule from file via the command line
+        // Before this was a hard coded value, which helped lead to code smell.
 		config = new Config();
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter schedule file name:");
