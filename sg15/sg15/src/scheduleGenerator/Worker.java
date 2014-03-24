@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class Worker implements Serializable{
 
 	// SWAP 1, TEAM 06
-	// Smell: Data class (lazy?)
+	// Smell: Data class (repeat)
 	// Worker doesn't actually do much more than store data.
 	// minor things are done in the functions...to store data.
 	// needs more responsibilities. 
